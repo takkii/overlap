@@ -45,11 +45,11 @@ class Source(Base):
 
                 # Settings, vim-plug | neovim path is true/false folder search.
                 neo_f: Optional[str] = '~/.neovim/plugged/overlap/dict/'
-                neo_t = '~/.neovim/plugged/phantom/dict/php_dict.txt'
+                neo_t = '~/.neovim/plugged/overlap/dict/php_dict.txt'
 
                 # Settings, vim-plug | vim path is true/false folder search.
                 vim_f: Optional[str] = '~/.vim/plugged/overlap/dict/'
-                vim_t = '~/.vim/plugged/phantom/dict/php_dict.txt'
+                vim_t = '~/.vim/plugged/overlap/dict/php_dict.txt'
 
                 # Settings, $HOME/dict path is true/false folder search.
                 loc_f: Optional[str] = '~/dict/'
