@@ -1,0 +1,7 @@
+msgpack-python
+msgpack
+numpy
+pynvim
+types-PyYAML
+pandas
+dask[complete]
