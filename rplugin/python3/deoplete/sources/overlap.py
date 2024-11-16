@@ -3,7 +3,6 @@ import gc
 import multiprocessing
 import os
 import pandas as pd
-import random
 import re
 import sys
 import traceback
@@ -24,7 +23,7 @@ class Source(Base):
         self.name: Optional[str] = 'overlap'
         self.filetypes: Optional[list] = ['php']
         mark_synbol: Optional[str] = '[php_method_pandas]'
-        self.mark: Optional[str]  = str(mark_synbol)
+        self.mark: Optional[str] = str(mark_synbol)
         ruby_match: Optional[list] = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
         slash_none: Optional[list] = [r'[;/[^¥/]\*/]']
         self.input_pattern: Optional[str] = '|'.join(ruby_match + slash_none)
