@@ -57,7 +57,7 @@ class CleanRunner
       FileUtils.mv("#{File.dirname(__FILE__)}/overlap_log", File.expand_path('~/'))
       puts ''
       puts 'Created, overlap_log folder.'
-      puts ''  
+      puts ''
     end
   end
 end
