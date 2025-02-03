@@ -21,8 +21,8 @@ class Source(Base):
     def __init__(self, vim):
         super().__init__(vim)
         self.name: Optional[str] = 'overlap'
-        self.filetypes: Optional[list] = ['php']
-        mark_synbol: Optional[str] = '[PHP_pandas]'
+        self.filetypes: Optional[list] = ['php', 'html']
+        mark_synbol: Optional[str] = '[pandas: ' + str(pd.__version__) + ']'
         self.mark: Optional[str]  = str(mark_synbol)
         ruby_match: Optional[list] = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
         slash_none: Optional[list] = [r'[;/[^¥/]\*/]']
