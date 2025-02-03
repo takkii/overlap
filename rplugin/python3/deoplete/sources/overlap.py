@@ -24,9 +24,9 @@ class Source(Base):
         self.filetypes: Optional[list] = ['php', 'html']
         mark_synbol: Optional[str] = '[pandas: ' + str(pd.__version__) + ']'
         self.mark: Optional[str]  = str(mark_synbol)
-        ruby_match: Optional[list] = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
-        slash_none: Optional[list] = [r'[;/[^¥/]\*/]']
-        self.input_pattern: Optional[str] = '|'.join(ruby_match + slash_none)
+        php_match: Optional[list] = [r'\.[a-zA-Z0-9_?!]*|[a-zA-Z]\w*::\w*']
+        html_match: Optional[list] = [r'[<a-zA-Z(?: .+?)?>.*?<\/a-zA-Z>]']
+        self.input_pattern: Optional[str] = '|'.join(php_match + html_match)
         self.rank: Optional[int] = 500
 
     def get_complete_position(self, context):
