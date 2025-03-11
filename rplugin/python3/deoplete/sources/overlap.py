@@ -42,10 +42,6 @@ class Source(Base):
             # 3.5 and higher, 4.x or less,python version is required.
             if (py_mj == 3 and py_mi > 4) or (py_mj < 4):
 
-                # Settings, vim-plug | neovim path is true/false folder search.
-                neo_f: Optional[str] = '~/.neovim/plugged/overlap/dict/'
-                neo_t = '~/.neovim/plugged/overlap/dict/php_dict_read.txt'
-
                 # Settings, vim-plug | vim path is true/false folder search.
                 vim_f: Optional[str] = '~/.vim/plugged/overlap/dict/'
                 vim_t = '~/.vim/plugged/overlap/dict/php_dict_read.txt'
@@ -72,25 +68,6 @@ class Source(Base):
                         # sorted and itemgetter
                         sorted(data_py, key=itemgetter(0))
                         return data_py
-
-                # Neovim Folder, Set the dictionary.
-                elif os.path.exists(os.path.expanduser(neo_f)):
-
-                    # Get Receiver/overlap behavior.
-                    with open(os.path.expanduser(neo_t)) as r_meth:
-                        # pandas and dask
-                        neo_php: Optional[list] = list(r_meth.readlines())
-                        pd_php = pd.Series(neo_php)
-                        st_r = pd_php.sort_index()
-                        ddf = from_pandas(
-                            data=st_r, npartitions=multiprocessing.cpu_count())
-                        data_array = ddf.to_dask_array(lengths=True)
-                        data = data_array.compute()
-                        neo_py: Optional[list] = [s.rstrip() for s in data]
-
-                        # sort and itemgetter
-                        neo_py.sort(key=itemgetter(0))
-                        return neo_py
 
                 # Vim Folder, Set the dictionary.
                 elif os.path.exists(os.path.expanduser(vim_f)):
