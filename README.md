@@ -6,5 +6,5 @@
     <p>overlap use <a href="https://github.com/Shougo/deoplete.nvim">deoplete.nvim</a></p>
 </div>
 <div align="center">
-    <b> Copyright (c) 2024-2025 Takayuki Kamiyama </b>
+    <b> Copyright &copy 2024-2025 Takayuki Kamiyama </b>
 </div>
