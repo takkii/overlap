@@ -23,11 +23,14 @@ class CleanRunner
       sel.grep(/\A#{Regexp.quote word}/)
     }
 
+    # Check, overlap.py path
+    git_o = File.basename(File.expand_path("~/.vim/plugged/overlap/rplugin/python3/deoplete/sources/overlap.py"), ".py") + "_log"
+
     while (line = Readline.readline(""))
       line.chomp!
 
       if line.match?(sel[0])
-        FileUtils.rm_rf(File.expand_path('~/overlap_log'))
+        FileUtils.rm_rf(File.expand_path('~/' + git_o))
         puts ''
         puts 'Deleted, the existing overlap_log folder.'
         puts ''
@@ -47,8 +50,11 @@ class CleanRunner
   end
 
   def self.run
+    # Check, overlap.py path
+    git_o = File.basename(File.expand_path("~/.vim/plugged/overlap/rplugin/python3/deoplete/sources/overlap.py"), ".py") + "_log"
     encoding_style
-    if Dir.exist?(File.expand_path('~/overlap_log'))
+
+    if Dir.exist?(File.expand_path('~/' + git_o))
       puts ''
       puts 'Already have a overlap_log folder.'
       delete
