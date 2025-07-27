@@ -78,27 +78,26 @@ class Source(Base):
 
         # TraceBack.
         except Exception:
-            # Check, overlap.py path.
-            git_o = File.basename(
-                File.expand_path(
-                    "~/~/.vim/plugged/overlap/rplugin/python3/deoplete/sources/overlap.py"
-                ), ".py") + "_log"
-
             # Load/Create LogFile.
-            except_folder: Optional[str] = '~/' + git_o
-            except_file: Optional[str] = '~/' + git_o + '/error.log'
+            overlap: Optional[str] = os.path.expanduser('~/overlap_log/')
+            db_w: Optional[str] = os.path.expanduser('~/overlap_log/debug.log')
 
             # Load the dictionary.
-            if os.path.isdir(os.path.expanduser(except_folder)):
-                with open(os.path.expanduser(except_file), 'a') as log_py:
+            if os.path.isdir(overlap):
+                with open(db_w, 'a') as log_py:
                     traceback.print_exc(file=log_py)
 
                     # throw except.
                     raise RuntimeError from None
 
-            # skl_str Folder not found.
+            # overlap_log Foler not found.
             else:
-                raise ValueError("None, Please Check the overlap Folder.")
+                raise ValueError("None, Please Check the overlap_log Folder.")
+
+        # Custom Exception.
+        except ValueError as ext:
+            print(ext)
+            raise RuntimeError from None
 
         # Once Exec.
         finally:
