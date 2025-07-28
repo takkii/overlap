@@ -78,9 +78,18 @@ class Source(Base):
 
         # TraceBack.
         except Exception:
+            # overlap file path.
+            filepath = os.path.expanduser(
+                "~/.vim/plugged/overlap/rplugin/python3/deoplete/sources/overlap.py"
+            )
+
+            basename_without_ext = os.path.splitext(
+                os.path.basename(filepath))[0]
+            filename = (str(basename_without_ext) + "_log")
+
             # Load/Create LogFile.
-            overlap: Optional[str] = os.path.expanduser('~/overlap_log/')
-            db_w: Optional[str] = os.path.expanduser('~/overlap_log/debug.log')
+            overlap: Optional[str] = str(filename)
+            db_w: Optional[str] = os.path.expanduser('~/' + filename + '/debug.log')
 
             # Load the dictionary.
             if os.path.isdir(overlap):
