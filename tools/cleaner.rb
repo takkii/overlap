@@ -24,13 +24,16 @@ class CleanRunner
     }
 
     # Check, overlap.py path
-    git_o = File.basename(File.expand_path("~/.vim/plugged/overlap/rplugin/python3/deoplete/sources/overlap.py"), ".py") + "_log"
+    filepath = '~/.vim/plugged/overlap/rplugin/python3/deoplete/sources/overlap.py'.to_s
+    git_k = File.basename(File.expand_path(filepath), '.py')
+    lap_exist = "#{git_k}_log"
+    encoding_style
 
     while (line = Readline.readline(""))
       line.chomp!
 
       if line.match?(sel[0])
-        FileUtils.rm_rf(File.expand_path('~/' + git_o))
+        FileUtils.rm_rf(File.expand_path("~/#{lap_exist}"))
         puts ''
         puts 'Deleted, the existing overlap_log folder.'
         puts ''
@@ -51,10 +54,12 @@ class CleanRunner
 
   def self.run
     # Check, overlap.py path
-    git_o = File.basename(File.expand_path("~/.vim/plugged/overlap/rplugin/python3/deoplete/sources/overlap.py"), ".py") + "_log"
+    filepath = '~/.vim/plugged/overlap/rplugin/python3/deoplete/sources/overlap.py'.to_s
+    git_k = File.basename(File.expand_path(filepath), '.py')
+    lap_exist = "#{git_k}_log"
     encoding_style
 
-    if Dir.exist?(File.expand_path('~/' + git_o))
+    if Dir.exist?(File.expand_path("~/#{lap_exist}"))
       puts ''
       puts 'Already have a overlap_log folder.'
       delete
@@ -77,4 +82,3 @@ ensure
 end
 
 __END__
-
